@@ -1,0 +1,55 @@
+<form id="form" name="form" ng-submit="save()">
+	<h1>Edit Payment</h1>
+	<div id="form:j_idt12" class="" aria-live="polite">
+		<div class="alert alert-danger" ng-show="errors != null">
+			<ul>
+				<li ng-repeat="(component, error) in errors">
+					{{'payment.' + component | translate}}: {{'error.' + error.messageTemplate | translate:error.attributes }}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="form:j_idt13" class="form-horizontal cf-formlayout">
+		<div class="row cf-formlayout-row">
+			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group">
+				<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+					<label id="form:j_idt14" class="ui-outputlabel ui-widget" for="form:id">{{'entity.id' | translate}}:</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 cf-formlayout-cell cf-formlayout-outputtext">
+					<span id="form:id" title="Id">{{entity.id}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="row cf-formlayout-row">
+			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.amount != null}">
+				<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+					<label id="form:j_idt15" class="ui-outputlabel ui-widget ui-state-error" for="form:amount">{{'payment.amount' | translate}}:<span class="ui-outputlabel-rfi">*</span>
+					</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+					<input aria-readonly="false" aria-disabled="false" role="textbox" id="form:amount" name="form:amount" title="Amount" ng-model="entity.amount" aria-required="true" class="ui-widget ui-state-default ui-corner-all ui-state-error form-control" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="row cf-formlayout-row">
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.date != null}">
+					<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+						<label id="form:j_idt16" class="ui-outputlabel ui-widget" for="form:date">{{'payment.date' | translate}}:</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+						<input aria-readonly="false" aria-disabled="false" role="textbox" id="form:date" name="form:date" title="Date" ng-model="entity.date" type="date" class="ui-widget ui-state-default ui-corner-all form-control">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-offset-0 col-sm-offset-4 col-xs-12 col-sm-8 cf-formlayout-buttonbar">
+					<input type="submit" id="form:j_idt17" name="form:j_idt17" value="Save" class="ui-widget ui-state-default ui-corner-all btn-default btn btn-primary">
+					</input>
+					<input type="button" aria-disabled="false" id="form:j_idt18" name="form:j_idt18" value="Delete" ng-click="deleteEntity()" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+					</input>
+					<input type="button" aria-disabled="false" id="form:j_idt23" name="form:j_idt23" value="Reset" ng-click="initEntity()" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+					</input>
+					<input type="button" aria-disabled="false" id="form:j_idt26" name="form:j_idt26" value="Cancel" ng-click="$location.path('customers/' + customerId)" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+					</input>
+				</div>
+			</div>
+</form>

@@ -1,0 +1,134 @@
+<form id="form" name="form" ng-submit="save()">
+	<h1>{{entity.id == null ? 'Create Customer' : 'Edit Customer'}}</h1>
+	<div id="form:j_idt15" class="" aria-live="polite">
+		<div class="alert alert-danger" ng-show="errorNotFound != null || errors != null">
+			<ul>
+				<li ng-show="errorNotFound != null">
+					Entity not found: {{errorNotFound}}
+				</li>
+				<li ng-repeat="(component, error) in errors">
+					{{'customer.' + component | translate}}: {{'error.' + error.messageTemplate | translate:error.attributes }}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="form:j_idt16" class="form-horizontal cf-formlayout">
+		<div class="row cf-formlayout-row">
+			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group">
+				<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+					<label id="form:j_idt17" class="ui-outputlabel ui-widget" for="form:id">{{'entity.id' | translate}}:</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 cf-formlayout-cell cf-formlayout-outputtext form-control-static">
+					<span id="form:id" title="Id">{{entity.id}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="row cf-formlayout-row">
+			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.name != null}">
+				<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+					<label id="form:j_idt18" class="ui-outputlabel ui-widget ui-state-error" for="form:name">{{'customer.name' | translate}}:<span class="ui-outputlabel-rfi">*</span>
+					</label>
+				</div>
+				<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+					<input aria-readonly="false" aria-disabled="false" role="textbox" id="form:name" name="form:name" title="Name" ng-model="entity.name" class="ui-widget ui-state-default ui-corner-all ui-state-error form-control" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="row cf-formlayout-row">
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.address != null}">
+					<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+						<label id="form:j_idt19" class="ui-outputlabel ui-widget" for="form:address">{{'customer.address' | translate}}:</label>
+					</div>
+					<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+						<input aria-readonly="false" aria-disabled="false" role="textbox" id="form:address" name="form:address" value="First Street" title="Address" ng-model="entity.address" class="ui-widget ui-state-default ui-corner-all form-control" type="text">
+						</div>
+					</div>
+				</div>
+				<div class="row cf-formlayout-row">
+					<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.city != null}">
+						<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+							<label id="form:j_idt20" class="ui-outputlabel ui-widget" for="form:city">{{'customer.city' | translate}}:</label>
+						</div>
+						<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+							<input aria-readonly="false" aria-disabled="false" role="textbox" id="form:city" name="form:city" value="Los Angeles" title="City" ng-model="entity.city" class="ui-widget ui-state-default ui-corner-all form-control" type="text">
+							</div>
+						</div>
+					</div>
+					<div class="row cf-formlayout-row">
+						<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.employmentStatus != null}">
+							<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+								<label id="form:j_idt21" class="ui-outputlabel ui-widget" for="form:employmentStatus_focus">{{'customer.employmentStatus' | translate}}:<span class="ui-outputlabel-rfi">*</span>
+								</label>
+							</div>
+							<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+								<select id="form:employmentStatus" name="form:employmentStatus" ng-model="entity.employmentStatus" size="1" title="Employment status"
+									ng-change="changeEmploymentStatus()" class="form-control">
+									<option value="Unemployed" selected="selected">Unemployed</option>
+									<option value="Employed">Employed</option>
+									<option value="Firm_owner">Firm owner</option>
+								</select>
+							</div>
+						</div>
+						<div class="row cf-formlayout-row" >
+							<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-hide="entity.employmentStatus === 'Unemployed'">
+								<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
+									<label id="form:companyNameLabel" class="ui-outputlabel ui-widget" for="form:companyName">Company name:</label>
+								</div>
+								<div class="col-xs-12 col-sm-8 cf-formlayout-cell">
+									<input aria-readonly="false" aria-disabled="false" role="textbox" id="form:companyName" name="form:companyName" title="Company name:" class="ui-widget ui-state-default ui-corner-all form-control" type="text">
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-offset-0 col-sm-offset-4 col-xs-12 col-sm-8 cf-formlayout-buttonbar">
+								<input type="submit" id="form:j_idt23" name="form:j_idt23" value="Save" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+								</input>
+								<input type="button" id="form:j_idt24" value="Delete" name="form:j_idt24" ng-click="deleteEntity()" ng-hide="entity.id == null" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+								</input>
+								<input type="button" id="form:j_idt26" name="form:j_idt26" value="Reset" ng-click="initEntity()" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+								</input>
+								<input type="button" id="form:j_idt28" name="form:j_idt28" value="Cancel" onclick="window.location.href = '#/customers';return false;" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+								</input>
+							</div>
+						</div>
+						<a name="payments"/>
+						<h2>Payment List</h2>
+						<div id="form:j_idt32" class="ui-datatable ui-widget">
+							<div class="ui-datatable-header ui-widget-header ui-corner-top">
+								<input type="button" id="form:j_idt32:j_idt33" name="form:j_idt32:j_idt33" value="Add" class="ui-widget ui-state-default ui-corner-all btn-default btn" 
+									ng-click="$location.path('customers/' + entity.id + '/payments/new')" ng-hide="entity.id == null">
+								</input>
+							</div>
+							<div class="ui-datatable-tablewrapper">
+								<table class="table table-striped table-bordered" role="grid">
+									<thead id="form:j_idt32_head">
+										<tr role="row">
+											<th id="form:j_idt32:j_idt35" class="ui-state-default" role="columnheader">
+												<span class="ui-column-title">{{'entity.id' | translate}}</span>
+											</th>
+											<th id="form:j_idt32:j_idt40" class="ui-state-default" role="columnheader">
+												<span class="ui-column-title">{{'payment.amount' | translate}}</span>
+											</th>
+											<th id="form:j_idt32:j_idt43" class="ui-state-default" role="columnheader">
+												<span class="ui-column-title">{{'payment.date' | translate}}</span>
+											</th>
+											<th id="form:j_idt32:j_idt46" class="ui-state-default" role="columnheader">
+												<span class="ui-column-title">Delete</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody id="form:j_idt32_data" class="ui-datatable-data ui-widget-content">
+										<tr class="ui-widget-content ui-datatable-even" role="row" ng-repeat="payment in entity.payments | orderBy:'id'">
+											<td role="gridcell">
+												<a href="#/customers/{{entity.id}}/payments/{{payment.id}}">{{payment.id}}</a>
+											</td>
+											<td role="gridcell">{{payment.amount}}</td>
+											<td role="gridcell">{{payment.date | date:'longDate'}}</td>
+											<td role="gridcell">
+												<a href="" ng-click="deletePayment(payment)">X</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+</form>

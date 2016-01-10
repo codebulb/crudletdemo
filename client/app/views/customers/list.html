@@ -1,0 +1,53 @@
+<form id="form" name="form" method="post" action="/JsfRestfulPostRedirectGetCrudFaces/customers/" enctype="application/x-www-form-urlencoded">
+	<h1>Customers</h1>
+	<div id="form:j_idt10" class="" aria-live="polite">
+		<div class="alert alert-danger" ng-show="errorNotFound != null">
+			<span class=""/>
+			<ul>
+				<li>Entity not found: {{errorNotFound}}</li>
+			</ul>
+		</div>
+	</div>
+	<div id="form:j_idt11" class="ui-datatable ui-widget">
+		<div class="ui-datatable-header ui-widget-header ui-corner-top">
+			<input type="button" onclick="window.location.href = '#/customers/new';return false;" value="Add" class="btn-default btn"/>
+		</div>
+		<div class="ui-datatable-tablewrapper">
+			<table class="table table-striped table-bordered" role="grid">
+				<thead id="form:j_idt11_head">
+					<tr role="row">
+						<th id="form:j_idt11:j_idt13" class="ui-state-default" role="columnheader">
+							<span class="ui-column-title">Id</span>
+						</th>
+						<th id="form:j_idt11:j_idt17" class="ui-state-default" role="columnheader">
+							<span class="ui-column-title">Name</span>
+						</th>
+						<th id="form:j_idt11:j_idt20" class="ui-state-default" role="columnheader">
+							<span class="ui-column-title">Address</span>
+						</th>
+						<th id="form:j_idt11:j_idt23" class="ui-state-default" role="columnheader">
+							<span class="ui-column-title">City</span>
+						</th>
+						<th id="form:j_idt11:j_idt26" class="ui-state-default" role="columnheader">
+							<span class="ui-column-title">Delete</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody id="form:j_idt11_data" class="ui-datatable-data ui-widget-content">
+					<tr class="ui-widget-content ui-datatable-even" role="row" ng-repeat="entity in entities">
+						<td role="gridcell">
+							<a href="#/customers/{{entity.id}}" class="ui-link ui-widget">{{entity.id}}</a>
+						</td>
+						<td role="gridcell">{{entity.name}}</td>
+						<td role="gridcell">{{entity.address}}</td>
+						<td role="gridcell">{{entity.city}}</td>
+						<td role="gridcell">
+
+							<a href="" ng-click="delete(entity)">X</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</form>
