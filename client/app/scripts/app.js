@@ -34,6 +34,15 @@ angular
         })
         .config(function (RestangularProvider) {
             RestangularProvider.setBaseUrl('http://localhost:8080/CrudletDemo.server/');
+    
+            RestangularProvider.setRequestInterceptor(function(elem, operation) {
+                // prevent "400 - bad request" error on DELETE
+                // as in https://github.com/mgonto/restangular/issues/78#issuecomment-18687759
+                if (operation === "remove") {
+                    return undefined;
+                }
+                return elem;
+            });
         })
         .config(['$translateProvider', function ($translateProvider) {
                 $translateProvider.translations('en', translations);
