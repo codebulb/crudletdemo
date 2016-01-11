@@ -16,9 +16,9 @@
     
     <dependencies>
         <dependency>
-            <groupId>ch.codebulb.crudlet</groupId>
-            <artifactId>Crudlet</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <groupId>com.github.codebulb</groupId>
+            <artifactId>crudlet</artifactId>
+            <version>0.1_RC-1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -89,5 +89,11 @@
             </plugin>
         </plugins>
     </build>
-
+    
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
