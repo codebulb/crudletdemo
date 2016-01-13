@@ -1,9 +1,12 @@
 <form id="form" name="form" ng-submit="save()">
 	<h1>Edit Payment</h1>
 	<div id="form:j_idt12" class="" aria-live="polite">
-		<div class="alert alert-danger" ng-show="errors != null">
+		<div class="alert alert-danger" ng-show="error != null || validationErrors != null">
 			<ul>
-				<li ng-repeat="(component, error) in errors">
+				<li ng-show="error != null">
+                                        {{'error.' + error.exception | translate}}
+                                </li>
+                                <li ng-repeat="(component, error) in validationErrors">
 					{{'payment.' + component | translate}}: {{'error.' + error.messageTemplate | translate:error.attributes }}
 				</li>
 			</ul>
@@ -21,7 +24,7 @@
 			</div>
 		</div>
 		<div class="row cf-formlayout-row">
-			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.amount != null}">
+			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': validationErrors.amount != null}">
 				<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
 					<label id="form:j_idt15" class="ui-outputlabel ui-widget ui-state-error" for="form:amount">{{'payment.amount' | translate}}:<span class="ui-outputlabel-rfi">*</span>
 					</label>
@@ -32,7 +35,7 @@
 				</div>
 			</div>
 			<div class="row cf-formlayout-row">
-				<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.date != null}">
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': validationErrors.date != null}">
 					<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
 						<label id="form:j_idt16" class="ui-outputlabel ui-widget" for="form:date">{{'payment.date' | translate}}:</label>
 					</div>

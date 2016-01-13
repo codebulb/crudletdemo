@@ -1,10 +1,14 @@
 <form id="form" name="form" method="post" action="/JsfRestfulPostRedirectGetCrudFaces/customers/" enctype="application/x-www-form-urlencoded">
 	<h1>Customers</h1>
 	<div id="form:j_idt10" class="" aria-live="polite">
-		<div class="alert alert-danger" ng-show="errorNotFound != null">
-			<span class=""/>
+		<div class="alert alert-danger" ng-show="errorNotFound != null || error != null">
 			<ul>
-				<li>Entity not found: {{errorNotFound}}</li>
+				<li ng-show="errorNotFound != null">
+					Entity not found: {{errorNotFound}}
+				</li>
+                                <li ng-show="error != null">
+                                        {{'error.' + error.exception | translate}}
+                                </li>
 			</ul>
 		</div>
 	</div>

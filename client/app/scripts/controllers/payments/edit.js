@@ -9,7 +9,8 @@ angular.module('clientApp')
                 $scope.entity.post().then(function () {
                     $location.path("/customers/" + $routeParams.customerId);
                 }, function (response) {
-                    $scope.errors = response.data.errors;
+                    $scope.validationErrors = response.data.validationErrors;
+                    $scope.error = response.data.error;
                 });
             };
 
@@ -31,6 +32,8 @@ angular.module('clientApp')
             $scope.deleteEntity = function () {
                 $scope.entity.remove().then(function () {
                     $location.path("/customers/" + $routeParams.customerId);
+                }, function (response) {
+                    $scope.error = response.data.error;
                 });
             };
 

@@ -11,7 +11,8 @@ angular.module('clientApp')
                 $scope.entity.save().then(function () {
                     $location.path("/customers");
                 }, function (response) {
-                    $scope.errors = response.data.errors;
+                    $scope.validationErrors = response.data.validationErrors;
+                    $scope.error = response.data.error;
                 });
             };
 
@@ -39,6 +40,8 @@ angular.module('clientApp')
             $scope.deleteEntity = function () {
                 $scope.entity.remove().then(function () {
                     $location.path("/customers");
+                }, function (response) {
+                    $scope.error = response.data.error;
                 });
             };
 
@@ -67,6 +70,8 @@ angular.module('clientApp')
             $scope.deletePayment = function (payment) {
                 payment.remove().then(function () {
                     $scope.initPayments();
+                }, function (response) {
+                    $scope.error = response.data.error;
                 });
             };
 

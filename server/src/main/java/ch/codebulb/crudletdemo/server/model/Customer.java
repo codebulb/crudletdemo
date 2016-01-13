@@ -10,10 +10,11 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Customer extends CrudEntity { 
-    @NotNull
+    @NotEmpty
     @Pattern(regexp = "[A-Za-z ]*")
     private String name;
     private String address;
@@ -25,6 +26,12 @@ public class Customer extends CrudEntity {
     private String companyName;
     
     // We don't cascade as child entities live independent of their parent
+    /* 
+     * Usually, we would have at least CascadeType.REMOVE in a 1..to..n relationship
+     * such that child entities get removed when their parent is,
+     * but for the sake of this demo application, we explicitly wish to cause
+     * SQLIntegrityConstraintViolationExceptions when children are still present.
+     */
     @OneToMany(mappedBy = "customer")
     private List<Payment> payments = new ArrayList<>();
     

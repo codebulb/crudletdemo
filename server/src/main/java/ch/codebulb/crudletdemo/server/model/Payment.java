@@ -21,8 +21,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement
 public class Payment extends CrudEntity {
     public static final String FIND_BY_CUSTOMER_ID = "Payment.findByCustomerId";
-    
-    @NotNull
     @Min(1)
     private int amount;
     @Temporal(TemporalType.DATE)
@@ -54,10 +52,9 @@ public class Payment extends CrudEntity {
 
     @Deprecated
     // for demo purposes only
-    public Payment(int amount, Date date, Customer customer) {
+    public Payment(int amount, Date date) {
         this.amount = amount;
         this.date = date;
-        this.customer = customer;
     }
 
     public int getAmount() {
@@ -83,12 +80,5 @@ public class Payment extends CrudEntity {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-    
-    public Long getCustomerId() {
-        if (getCustomer() == null) {
-            return null;
-        }
-        return getCustomer().getId();
     }
 }

@@ -13,6 +13,8 @@ angular.module('clientApp')
                     // remove search parameters
                     $location.url($location.path());
                     $route.reload();
+                }, function (response) {
+                    $scope.error = response.data.error;
                 });
             };
         });

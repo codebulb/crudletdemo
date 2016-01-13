@@ -1,12 +1,15 @@
 <form id="form" name="form" ng-submit="save()">
 	<h1>{{entity.id == null ? 'Create Customer' : 'Edit Customer'}}</h1>
 	<div id="form:j_idt15" class="" aria-live="polite">
-		<div class="alert alert-danger" ng-show="errorNotFound != null || errors != null">
+		<div class="alert alert-danger" ng-show="errorNotFound != null || error != null || validationErrors != null">
 			<ul>
 				<li ng-show="errorNotFound != null">
 					Entity not found: {{errorNotFound}}
 				</li>
-				<li ng-repeat="(component, error) in errors">
+                                <li ng-show="error != null">
+					{{'error.' + error.exception | translate}}
+				</li>
+				<li ng-repeat="(component, error) in validationErrors">
 					{{'customer.' + component | translate}}: {{'error.' + error.messageTemplate | translate:error.attributes }}
 				</li>
 			</ul>
@@ -24,7 +27,7 @@
 			</div>
 		</div>
 		<div class="row cf-formlayout-row">
-			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.name != null}">
+			<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': validationErrors.name != null}">
 				<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
 					<label id="form:j_idt18" class="ui-outputlabel ui-widget ui-state-error" for="form:name">{{'customer.name' | translate}}:<span class="ui-outputlabel-rfi">*</span>
 					</label>
@@ -35,7 +38,7 @@
 				</div>
 			</div>
 			<div class="row cf-formlayout-row">
-				<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.address != null}">
+				<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': validationErrors.address != null}">
 					<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
 						<label id="form:j_idt19" class="ui-outputlabel ui-widget" for="form:address">{{'customer.address' | translate}}:</label>
 					</div>
@@ -45,7 +48,7 @@
 					</div>
 				</div>
 				<div class="row cf-formlayout-row">
-					<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.city != null}">
+					<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': validationErrors.city != null}">
 						<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
 							<label id="form:j_idt20" class="ui-outputlabel ui-widget" for="form:city">{{'customer.city' | translate}}:</label>
 						</div>
@@ -55,7 +58,7 @@
 						</div>
 					</div>
 					<div class="row cf-formlayout-row">
-						<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': errors.employmentStatus != null}">
+						<div class="form-group col-xs-12 col-sm-12 col-lg-12 cf-formlayout-group" ng-class="{'has-error': validationErrors.employmentStatus != null}">
 							<div class="col-xs-12 col-sm-4 cf-formlayout-cell control-label">
 								<label id="form:j_idt21" class="ui-outputlabel ui-widget" for="form:employmentStatus_focus">{{'customer.employmentStatus' | translate}}:<span class="ui-outputlabel-rfi">*</span>
 								</label>
