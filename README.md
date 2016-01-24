@@ -1,9 +1,6 @@
 # crudletdemo
 Demo application of the Crudlet REST framework
 
-## Version info
-This is the demo for **Crudlet 0.1** release.
-
 ## Usage instructions
 ### Client
 Default Node.js setup. Load dependencies with npm / bower; start application with grunt.
