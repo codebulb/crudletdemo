@@ -1,5 +1,5 @@
 'use strict';
-1
+
 angular.module('clientApp')
         .controller("CustomerListCtrl", function ($scope, $route, $routeParams, $location, Restangular) {
             $scope.errorNotFound = $routeParams.errorNotFound;

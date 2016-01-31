@@ -47,7 +47,7 @@
 				<div class="col-xs-offset-0 col-sm-offset-4 col-xs-12 col-sm-8 cf-formlayout-buttonbar">
 					<input type="submit" id="form:j_idt17" name="form:j_idt17" value="Save" class="ui-widget ui-state-default ui-corner-all btn-default btn btn-primary">
 					</input>
-					<input type="button" aria-disabled="false" id="form:j_idt18" name="form:j_idt18" value="Delete" ng-click="deleteEntity()" class="ui-widget ui-state-default ui-corner-all btn-default btn">
+					<input type="button" aria-disabled="false" id="form:j_idt18" name="form:j_idt18" value="Delete" ng-click="deleteEntity()" ng-hide="entity.id == null" class="ui-widget ui-state-default ui-corner-all btn-default btn">
 					</input>
 					<input type="button" aria-disabled="false" id="form:j_idt23" name="form:j_idt23" value="Reset" ng-click="initEntity()" class="ui-widget ui-state-default ui-corner-all btn-default btn">
 					</input>

@@ -6,7 +6,7 @@ angular.module('clientApp')
             $scope.$location = $location;
 
             $scope.save = function () {
-                $scope.entity.post().then(function () {
+                $scope.entity.save().then(function () {
                     $location.path("/customers/" + $routeParams.customerId);
                 }, function (response) {
                     $scope.validationErrors = response.data.validationErrors;
@@ -21,7 +21,9 @@ angular.module('clientApp')
                 }
                 else {
                     Restangular.one("customers", $routeParams.customerId).one("payments", $routeParams.id).get().then(function (entity) {
-                        entity.date = new Date($filter('date')(entity.date, "yyyy-MM-dd"));
+						if (entity.date != null) {
+							entity.date = new Date($filter('date')(entity.date, "yyyy-MM-dd"));
+						}
                         $scope.entity = entity;
                     }, function (response) {
                         $location.path("/customers/" + $routeParams.customerId).search({errorNotFound: $routeParams.id});

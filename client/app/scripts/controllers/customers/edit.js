@@ -51,22 +51,6 @@ angular.module('clientApp')
                 }
             };
 
-            $scope.editPayment = function (entity, index) {
-                if (typeof $scope.entity.payments === 'undefined') {
-                    $scope.entity.payments = [];
-                }
-                ngDialog.open({
-                    template: 'views/payments/edit.html',
-                    controller: 'PaymentsEditCtrl',
-                    scope: $scope,
-                    data: {
-                        entity: entity,
-                        index: typeof index !== 'undefined' ? index : $scope.entity.payments.length,
-                        create: typeof index === 'undefined'
-                    }
-                });
-            };
-
             $scope.deletePayment = function (payment) {
                 payment.remove().then(function () {
                     $scope.initPayments();
