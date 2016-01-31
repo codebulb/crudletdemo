@@ -1,11 +1,15 @@
 package ch.codebulb.crudletdemo.server.model;
 
-import ch.codebulb.crudlet.model.CrudEntity;
+import ch.codebulb.crudlet.model.CrudIdentifiable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -13,15 +17,23 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Customer extends CrudEntity { 
+public class Customer implements CrudIdentifiable {
+    // For use with MySQL, GenerationType.AUTO doesn't work: http://stackoverflow.com/a/4103347/1399395
+    // TODO Build generic solution in CrudEntity
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false)
     @NotEmpty
     @Pattern(regexp = "[A-Za-z ]*")
     private String name;
     private String address;
     private String city;
     
-    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     @NotNull
+    @Enumerated(EnumType.STRING)
     private EmploymentStatus employmentStatus = EmploymentStatus.Unemployed;
     private String companyName;
     
@@ -56,6 +68,16 @@ public class Customer extends CrudEntity {
             return getCompanyName() == null;
         }
         return true;
+    }
+    
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

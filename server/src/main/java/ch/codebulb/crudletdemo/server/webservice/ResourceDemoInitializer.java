@@ -24,6 +24,16 @@ public class ResourceDemoInitializer {
     
     @PostConstruct
     protected void initDemoData() {
+        // for demo purposes only:
+        /* reuse formerly inserted DB values (from the equivalent Node.js server startup run).
+         * this is effective only if in persistence.xml:
+         * <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+         * is *not* set.
+         */
+        if (!customerService.findAll().isEmpty()) {
+            return;
+        }
+        
         Customer customer1 = new Customer("Max", "First Street", "Los Angeles");
         customer1 = customerService.save(customer1);
 
