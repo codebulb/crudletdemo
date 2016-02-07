@@ -29,4 +29,9 @@ var translations = {
     'error.pattern': 'must match the expected pattern',
 	
 	'error.ER_ROW_IS_REFERENCED_2': 'Cannot delete an object which is still referenced to by other objects.',
+	
+	// hapi-bookshelf-crud
+	'error.any.required': 'may not be empty',
+	'error.number.positive': 'must be greater than or equal to 1',
+	'error.string.regex.base': 'must match "{{pattern}}"',
 };
