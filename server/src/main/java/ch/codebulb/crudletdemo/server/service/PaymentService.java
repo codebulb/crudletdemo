@@ -2,7 +2,9 @@ package ch.codebulb.crudletdemo.server.service;
 
 import ch.codebulb.crudlet.service.CrudService;
 import ch.codebulb.crudletdemo.server.model.Payment;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -29,5 +31,27 @@ public class PaymentService extends CrudService<Payment> {
                 .getResultList();
     }
     
+    public List<Payment> findBy(Long customerId, Map<String, String> predicates) {
+        if (predicates == null) {
+            predicates = new HashMap<>();
+        }
+        predicates.put("customerId", customerId.toString());
+        return super.findBy(predicates);
+    }
     
+    public long countBy(Long customerId, Map<String, String> predicates) {
+        if (predicates == null) {
+            predicates = new HashMap<>();
+        }
+        predicates.put("customerId", customerId.toString());
+        return super.countBy(predicates);
+    }
+    
+    public void deleteBy(Long customerId, Map<String, String> predicates) {
+        if (predicates == null) {
+            predicates = new HashMap<>();
+        }
+        predicates.put("customerId", customerId.toString());
+        super.deleteBy(predicates);
+    }
 }

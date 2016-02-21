@@ -1,7 +1,5 @@
 package ch.codebulb.crudletdemo.server.webservice;
 
-import ch.codebulb.crudlet.config.RestfulExceptionMapper;
-import ch.codebulb.crudlet.model.errors.RestfulPersistenceValidationConstraintViolation;
 import ch.codebulb.crudletdemo.server.model.Customer;
 import ch.codebulb.crudletdemo.server.model.Payment;
 import ch.codebulb.crudletdemo.server.service.CustomerService;

@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.codebulb.crudletdemo.server</groupId>
-    <artifactId>CrudletDemo.Server</artifactId>
+    <artifactId>CrudletDemo.server</artifactId>
     <version>0.2-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>CrudletDemo.Server</name>
+    <name>CrudletDemo.server</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.github.codebulb</groupId>
             <artifactId>crudlet</artifactId>
-            <version>0.1</version>
+            <version>0.2_RC-1</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>

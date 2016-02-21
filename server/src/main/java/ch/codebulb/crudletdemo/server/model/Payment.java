@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,9 +22,13 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
-@NamedQuery(name = Payment.FIND_BY_CUSTOMER_ID, query = "SELECT e FROM Payment e where e.customer.id = :customerId")
+@NamedQueries({
+    @NamedQuery(name = Payment.FIND_BY_CUSTOMER_ID, query = "SELECT e FROM Payment e where e.customer.id = :customerId"),
+    @NamedQuery(name = Payment.DELETE_BY_CUSTOMER_ID, query = "DELETE FROM Payment e where e.customer.id = :customerId"),
+})
 public class Payment implements CrudIdentifiable {
     public static final String FIND_BY_CUSTOMER_ID = "Payment.findByCustomerId";
+    public static final String DELETE_BY_CUSTOMER_ID = "Payment.deleteByCustomerId";
     
     // For use with MySQL, GenerationType.AUTO doesn't work: http://stackoverflow.com/a/4103347/1399395
     // TODO Build generic solution in CrudEntity

@@ -63,13 +63,6 @@ public class Customer implements CrudIdentifiable {
         return this;
     }
     
-    public boolean isCompanyEmptyWhenUnemployed() {
-        if (getEmploymentStatus() == EmploymentStatus.Unemployed) {
-            return getCompanyName() == null;
-        }
-        return true;
-    }
-    
     @Override
     public Long getId() {
         return id;
