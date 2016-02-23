@@ -47,7 +47,6 @@ angular
         .config(['$translateProvider', function ($translateProvider) {
                 $translateProvider.translations('en', translations);
                 $translateProvider.preferredLanguage('en');
-                $translateProvider.useMissingTranslationHandlerLog();
                 $translateProvider.useSanitizeValueStrategy('sanitize');
             }])
         ;
