@@ -2,7 +2,7 @@
 CRUD REST-to-SQL demo application.
 
 For use with
-* a Java EE server with Crudlet REST framework (included, [find out more about the framework here](https://github.com/codebulb/crudlet))
+* a Java EE server with Crudlet 0.2 REST framework (included, [find out more about the framework here](https://github.com/codebulb/crudlet))
 * a Node.js + Hapi + Bookshelf server ([get the demo server here](https://github.com/codebulb/HapiBookshelfServer))
 * a Node.js server with hapi-bookshelf-crud ([find out more about the framework here](https://github.com/codebulb/hapi-bookshelf-crud); [get the demo server here](https://github.com/codebulb/hapi-bookshelf-crud-demo))
 
